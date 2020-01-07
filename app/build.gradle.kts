@@ -11,7 +11,7 @@ android {
     buildToolsVersion = Versions.buildTools
 
     defaultConfig {
-        applicationId = "com.liebherr.hau.smarthome"
+        applicationId = "com.example.currencyconverter"
         minSdkVersion(Versions.minSdk)
         targetSdkVersion(Versions.targetSdk)
 
