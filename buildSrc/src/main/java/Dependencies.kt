@@ -20,13 +20,12 @@ object Versions {
     const val appCompat = "1.1.0"
     const val constraintLayout = "2.0.0-beta1"
     const val timber = "4.7.1"
-    const val koin = "2.0.1"
 
     // Testing dependencies
     const val testJUnit = "4.12"
 
     // Instrumented testing dependencies
-    const val testRunner = "1.2.0"
+    const val testExtJUnit = "1.1.1"
     const val testCore = "1.2.0"
     const val testEspressoCore = "3.2.0"
 
@@ -60,10 +59,9 @@ object AndroidDependencies {
  */
 object TestDependencies {
     const val jUnit = "junit:junit:${Versions.testJUnit}"
-    const val runner = "androidx.test:runner:${Versions.testRunner}"
+    const val extJUnit = "androidx.test.ext:junit:${Versions.testExtJUnit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.testEspressoCore}"
     const val ktlintTest = "com.pinterest.ktlint:ktlint-test:${Versions.ktlint}"
-    const val koinTest = "org.koin:koin-test:${Versions.koin}"
 }
 
 /**

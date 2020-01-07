@@ -4,6 +4,8 @@ plugins {
     id("kotlin-android-extensions")
 }
 
+apply(from = "$rootDir/config/quality.gradle.kts")
+
 android {
     compileSdkVersion(Versions.compileSdk)
     buildToolsVersion = Versions.buildTools

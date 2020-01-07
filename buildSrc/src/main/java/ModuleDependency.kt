@@ -6,8 +6,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
  */
 fun DependencyHandler.addTestDependencies() {
     testImplementation(Dependencies.test.jUnit)
-    testImplementation(Dependencies.test.koinTest)
-    androidTestImplementation(Dependencies.test.runner)
+    androidTestImplementation(Dependencies.test.extJUnit)
     androidTestImplementation(Dependencies.test.espresso)
 }
 

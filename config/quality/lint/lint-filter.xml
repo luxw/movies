@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="all" severity="error">
+        <ignore path="build"/>
+    </issue>
+
+    <!-- App indexing not used right now -->
+    <issue id="GoogleAppIndexingWarning" severity="ignore" />
+
+    <!-- Backup not setup -->
+    <issue id="AllowBackup" severity="ignore" />
+</lint>
