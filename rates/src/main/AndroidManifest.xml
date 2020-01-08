@@ -8,8 +8,10 @@
         dist:onDemand="false"
         dist:title="@string/feature_name" />
 
-    <application>
-        <activity android:name=".ui.RatesActivity"></activity>
+    <application
+        android:icon="@mipmap/ic_launcher">
+
+        <activity android:name=".ui.RatesActivity" />
     </application>
 
 </manifest>
