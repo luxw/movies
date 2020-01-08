@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.dynamic-feature")
     id("kotlin-android")
     id("kotlin-android-extensions")
 }
@@ -11,27 +11,11 @@ android {
     buildToolsVersion = Versions.buildTools
 
     defaultConfig {
-        applicationId = "com.example.currencyconverter"
         minSdkVersion(Versions.minSdk)
         targetSdkVersion(Versions.targetSdk)
 
-        versionCode = Versions.versionCode
-        versionName = Versions.versionName
-        project.ext.set("versionName", versionName)
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-        }
-    }
-
-    dynamicFeatures = mutableSetOf(":rates")
-}
-
-base {
-    archivesBaseName = "CurrencyConverter"
 }
 
 dependencies {
@@ -41,6 +25,9 @@ dependencies {
 
     // Core module dependency
     implementation(project(":core"))
+
+    // App module dependency
+    implementation(project(":app"))
 
     addTestDependencies()
 }

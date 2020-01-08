@@ -13,7 +13,7 @@ object Versions {
     const val buildTools = "29.0.2"
 
     // Build dependencies
-    const val gradle = "3.5.0"
+    const val gradle = "3.5.3"
 
     // Main dependencies
     const val kotlin = "1.3.50"

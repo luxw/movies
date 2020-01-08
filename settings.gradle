@@ -1,3 +1,5 @@
 include ':app'
 include ':core'
+include ':rates'
+
 rootProject.name='CurrencyConverter'
