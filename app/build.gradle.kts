@@ -37,5 +37,8 @@ dependencies {
     implementation(Dependencies.android.appCompat)
     implementation(Dependencies.android.constraintLayout)
 
+    // Core module dependency
+    implementation(project(":core"))
+
     addTestDependencies()
 }
