@@ -28,6 +28,11 @@ android {
     }
 
     dynamicFeatures = mutableSetOf(":rates")
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 base {
@@ -38,6 +43,8 @@ dependencies {
     implementation(Dependencies.kotlin)
     implementation(Dependencies.android.appCompat)
     implementation(Dependencies.android.constraintLayout)
+
+    api(Dependencies.android.rxAndroid)
 
     // Core module dependency
     implementation(project(":core"))

@@ -20,6 +20,13 @@ object Versions {
     const val appCompat = "1.1.0"
     const val constraintLayout = "2.0.0-beta1"
     const val timber = "4.7.1"
+    const val rxJava = "2.2.16"
+    const val rxAndroid = "2.1.1"
+    const val rxJavaAdapter = "2.7.1"
+    const val rxKotlin = "2.4.0"
+    const val retrofit = "2.6.1"
+    const val moshi = "1.9.2"
+    const val httpLogging = "4.3.1"
 
     // Testing dependencies
     const val testJUnit = "4.12"
@@ -52,6 +59,14 @@ object AndroidDependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
+    const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlin}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.rxJavaAdapter}"
+    const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
+    const val moshiAdapter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    const val httpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLogging}"
 }
 
 /**
@@ -73,7 +88,7 @@ object GradleDependencies {
 }
 
 /**
- * Describes quality dpeendencies.
+ * Describes quality dependencies.
  */
 object QualityDependencies {
     const val ktlint = "com.pinterest:ktlint:${Versions.ktlint}"
