@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
 apply(from = "$rootDir/config/quality.gradle.kts")
@@ -48,6 +49,8 @@ dependencies {
 
     // Core module dependency
     implementation(project(":core"))
+
+    kapt(Dependencies.android.daggerCompiler)
 
     addTestDependencies()
 }

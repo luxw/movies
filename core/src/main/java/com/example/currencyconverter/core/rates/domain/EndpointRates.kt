@@ -6,6 +6,6 @@ package com.example.currencyconverter.core.rates.domain
  *
  * @param rates a map of currency acronyms and rates.
  */
-data class Rates(
+data class EndpointRates(
     val rates: Map<String, Double>
 )

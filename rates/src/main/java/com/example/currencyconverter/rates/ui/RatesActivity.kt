@@ -2,48 +2,44 @@ package com.example.currencyconverter.rates.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.example.currencyconverter.core.log.Log
-import com.example.currencyconverter.core.network.ApiFactory
-import com.example.currencyconverter.core.rates.domain.RatesApi
+import com.example.currencyconverter.core.rates.domain.Currency
 import com.example.currencyconverter.rates.R
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import com.example.currencyconverter.rates.injection.inject
+import javax.inject.Inject
 
 /**
  * Activity entry point to the rates feature.
  */
 internal class RatesActivity : AppCompatActivity() {
 
-    private val compositeDisposable = CompositeDisposable()
+    @Inject
+    internal lateinit var viewModel: RatesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("onCreate")
 
+        // Enables dagger injection in this class.
+        inject(resources.getInteger(R.integer.requestDelay).toLong())
+
         setContentView(R.layout.activity_rates)
 
-        // Testing purposes.
-        val ratesRepo = object : ApiFactory<RatesApi>() {
-            override val api: RatesApi
-                get() = retrofit.create(RatesApi::class.java)
-        }.api
+        val baseCurrency = Currency("EUR", 1.0)
 
-        // Testing purposes.
-        val disposable = ratesRepo.getRates("EUR")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { result, error ->
-                Log.d("error: $error")
-                Log.d("result: $result")
+        // Testing purposes
+        @Suppress("MagicNumber")
+        viewModel.getRatesLiveData(baseCurrency, 10.0).observe(this, Observer { rates ->
+            when (rates) {
+                is RatesUiModel.Error -> Log.e("Error!")
+                is RatesUiModel.Rates -> Log.d("rates: ${rates.rates}")
             }
-
-        compositeDisposable.add(disposable)
+        })
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d("onDestroy")
-        compositeDisposable.clear()
     }
 }

@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
 apply(from = "$rootDir/config/quality.gradle.kts")
@@ -29,9 +30,14 @@ dependencies {
     api(Dependencies.android.rxJava)
     api(Dependencies.android.rxKotlin)
     api(Dependencies.android.retrofit)
+    api(Dependencies.android.dagger)
 
-    implementation(Dependencies.android.moshi)
-    implementation(Dependencies.android.moshiAdapter)
-    implementation(Dependencies.android.httpLogging)
-    implementation(Dependencies.android.rxJavaAdapter)
+    api(Dependencies.android.moshi)
+    api(Dependencies.android.moshiAdapter)
+    api(Dependencies.android.httpLogging)
+    api(Dependencies.android.rxJavaAdapter)
+
+    kapt(Dependencies.android.daggerCompiler)
+
+    addTestDependencies()
 }

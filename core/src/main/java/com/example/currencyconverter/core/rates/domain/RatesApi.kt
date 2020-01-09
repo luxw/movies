@@ -19,5 +19,5 @@ interface RatesApi {
     @GET("latest")
     fun getRates(
         @Query("base") base: String
-    ): Single<Rates>
+    ): Single<EndpointRates>
 }
