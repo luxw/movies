@@ -22,6 +22,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
@@ -36,6 +40,8 @@ dependencies {
     api(Dependencies.android.moshiAdapter)
     api(Dependencies.android.httpLogging)
     api(Dependencies.android.rxJavaAdapter)
+
+    api(Dependencies.android.material)
 
     kapt(Dependencies.android.daggerCompiler)
 

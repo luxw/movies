@@ -30,13 +30,14 @@ class RatesViewModelTest {
         // Given
 
         // When
-        val liveData = ratesViewModel.getRatesLiveData(baseCurrency, baseValue)
-        liveData.observeForever(observer)
+        ratesViewModel.loadRates(baseCurrency, baseValue)
+        ratesViewModel.ratesLiveData.observeForever(observer)
 
         // Then
         verify {
             observer.onChanged(match { rate ->
-                rate is RatesUiModel.Rates && rate.rates == listOf(Rate(apiReturn[0], baseValue))
+                rate is RatesUiModel.Rates &&
+                        rate.rates == listOf(baseRate, Rate(apiReturn[0], baseValue))
             })
         }
     }
@@ -46,20 +47,41 @@ class RatesViewModelTest {
         // Given
 
         // When
-        val liveData = ratesViewModel.getRatesLiveData(baseCurrency, baseValue)
-        liveData.observeForever(observer)
+        ratesViewModel.loadRates(baseCurrency, baseValue)
+        ratesViewModel.ratesLiveData.observeForever(observer)
 
         // Then
-        verify(atLeast = 3, timeout = 300L) {
+        verify(exactly = 3, timeout = 300L) {
             observer.onChanged(match { rate ->
-                rate is RatesUiModel.Rates && rate.rates == listOf(Rate(apiReturn[0], baseValue))
+                rate is RatesUiModel.Rates &&
+                        rate.rates == listOf(baseRate, Rate(apiReturn[0], baseValue))
+            })
+        }
+    }
+
+    @Test
+    fun `when updating the values, given a new base value,  then it should emit new values`() {
+        // Given
+        val newValue = baseValue * 2
+        ratesViewModel.setLiveDataValue(listOf(baseRate, Rate(apiReturn[0], baseValue)))
+
+        // When
+        ratesViewModel.updateValues(newValue)
+        ratesViewModel.ratesLiveData.observeForever(observer)
+
+        // Then
+        verify {
+            observer.onChanged(match { rate ->
+                rate is RatesUiModel.Rates &&
+                        rate.rates == listOf(baseRate, Rate(apiReturn[0], baseValue * 2))
             })
         }
     }
 
     private companion object {
         private val baseCurrency = Currency("EUR", 1.0)
-        private val baseValue = 100.0
+        private const val baseValue = 100.0
+        private val baseRate = Rate(baseCurrency, baseValue)
         private val apiReturn = listOf(Currency("USD", 1.1))
     }
 }

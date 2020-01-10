@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Rate item styles -->
+    <style name="RateItem"/>
+    <style name="RateItem.Icon">
+        <item name="android:layout_width">@dimen/rateItem_iconSize</item>
+        <item name="android:layout_height">@dimen/rateItem_iconSize</item>
+        <item name="android:layout_marginLeft">@dimen/rateItem_margin</item>
+    </style>
+    <style name="RateItem.Acronym">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/rateItem_secondaryTextSize</item>
+        <item name="android:textColor">@color/colorTextSecondary</item>
+        <item name="android:layout_marginStart">@dimen/rateItem_margin</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+    <style name="RateItem.Name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/rateItem_margin</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textSize">@dimen/rateItem_tertiaryTextSize</item>
+        <item name="android:textColor">@color/colorTextTertiary</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+    <style name="RateItem.Value">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/rateItem_margin</item>
+        <item name="android:textSize">@dimen/rateItem_primaryTextSize</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:inputType">numberDecimal</item>
+    </style>
+</resources>

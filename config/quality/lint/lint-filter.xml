@@ -12,4 +12,10 @@
 
     <!-- Timber issue -->
     <issue id="ObsoleteLintCustomCheck" severity="ignore" />
+
+    <!-- Ignore unused resources because lint doesn't know that some images are dynamically loaded -->
+    <issue id="UnusedResources" severity="ignore" />
+
+    <!-- Ignore missing density folders because we don't have all images -->
+    <issue id="IconMissingDensityFolder" severity="ignore" />
 </lint>

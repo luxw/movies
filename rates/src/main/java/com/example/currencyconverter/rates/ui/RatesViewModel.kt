@@ -1,5 +1,6 @@
 package com.example.currencyconverter.rates.ui
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,22 +24,30 @@ internal class RatesViewModel @Inject constructor(
     private val ratesRepository: RatesRepository
 ) : ViewModel() {
 
+    val ratesLiveData: LiveData<RatesUiModel>
+    get() = _ratesLiveData
+
+    private var currentBaseValue: Double = 0.0
+
+    private val _ratesLiveData = MutableLiveData<RatesUiModel>()
+
     private val compositeDisposable = CompositeDisposable()
 
     /**
-     * Gets an observable that emits the currency rates every 1 second. The values are based on
-     * the base currency and the base value arguments. E.g. Base currency is EUR and value is 100,
-     * then the observable will emit all currencies such as USD with value 110 if the rate 1.1.
+     * Loads rates to an observable that emits the currency rates every 1 second. The values are
+     * based on the base currency and the base value arguments. E.g. Base currency is EUR and value
+     * is 100, then the observable will emit all currencies such as USD with value 110 if the rate
+     * 1.1.
      *
      * @param base the base currency object.
      * @param baseValue the base value to convert the other currencies.
      *
-     * @return a live data observable which emits [RatesUiModel]s.
      */
-    internal fun getRatesLiveData(base: Currency, baseValue: Double): LiveData<RatesUiModel> {
-        Log.d("getRatesObservable, base: $base, value: $baseValue")
+    fun loadRates(base: Currency, baseValue: Double) {
+        Log.d("loadRates, base: $base, value: $baseValue")
+        currentBaseValue = baseValue
 
-        val liveData = MutableLiveData<RatesUiModel>()
+        val baseRate = Rate(base, baseValue)
         compositeDisposable.clear()
 
         val disposable = ratesRepository.getRates(base)
@@ -46,18 +55,38 @@ internal class RatesViewModel @Inject constructor(
             .repeatWhen { completed -> completed.delay(requestDelay, TimeUnit.MILLISECONDS) }
             .subscribeBy(
                 onError = {
-                    liveData.postValue(RatesUiModel.Error)
+                    _ratesLiveData.postValue(RatesUiModel.Error)
                 },
                 onNext = { result ->
                     // Transform the result from the backend into something the UI can consume.
-                    val rates = result.map { currency -> Rate(currency, baseValue) }
-                    liveData.postValue(RatesUiModel.Rates(rates))
+                    val rates = result.map { currency -> Rate(currency, currentBaseValue) }
+                    _ratesLiveData.postValue(RatesUiModel.Rates(listOf(baseRate) + rates))
                 }
             )
 
         compositeDisposable.add(disposable)
+    }
 
-        return liveData
+    /**
+     * Updates only the values, which does not trigger a call to the endpoint.
+     *
+     * @param baseValue the new base value.
+     */
+    fun updateValues(baseValue: Double) {
+        val currentRates = (_ratesLiveData.value as? RatesUiModel.Rates)?.rates ?: listOf()
+        currentBaseValue = baseValue
+
+        _ratesLiveData.postValue(
+            RatesUiModel.Rates(
+                listOf(currentRates[0]) +
+                        currentRates.drop(1).map { it.copy(value = baseValue * it.rate) }
+            )
+        )
+    }
+
+    @VisibleForTesting
+    internal fun setLiveDataValue(rates: List<Rate>) {
+        _ratesLiveData.value = RatesUiModel.Rates(rates)
     }
 
     override fun onCleared() {

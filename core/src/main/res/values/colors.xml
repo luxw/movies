@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General app colors -->
+    <color name="colorTextPrimary">#000000</color>
+    <color name="colorTextSecondary">#000000</color>
+    <color name="colorTextTertiary">#8B959E</color>
+
+    <color name="colorListItemPressed">#DDDDDD</color>
+
+</resources>

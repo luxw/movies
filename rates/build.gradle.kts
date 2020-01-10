@@ -22,6 +22,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
@@ -30,6 +34,7 @@ dependencies {
     implementation(Dependencies.android.constraintLayout)
     implementation(Dependencies.android.lifecycle)
     implementation(Dependencies.android.lifecycleViewModel)
+    implementation(Dependencies.android.glide)
 
     // Core module dependency
     implementation(project(":core"))

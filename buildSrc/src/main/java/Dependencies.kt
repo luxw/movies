@@ -29,6 +29,8 @@ object Versions {
     const val moshi = "1.9.2"
     const val httpLogging = "4.3.1"
     const val dagger = "2.25.4"
+    const val material = "1.0.0"
+    const val glide = "4.10.0"
 
     // Testing dependencies
     const val testJUnit = "4.12"
@@ -76,6 +78,8 @@ object AndroidDependencies {
     const val httpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLogging}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    const val material = "com.google.android.material:material:${Versions.material}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
 
 /**
