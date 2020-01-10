@@ -26,6 +26,13 @@ android {
     dataBinding {
         isEnabled = true
     }
+
+    buildTypes {
+        getByName("release") {
+            isDebuggable = false
+            isZipAlignEnabled = true
+        }
+    }
 }
 
 dependencies {

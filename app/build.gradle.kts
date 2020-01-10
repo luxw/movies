@@ -21,10 +21,30 @@ android {
         project.ext.set("versionName", versionName)
     }
 
+    signingConfigs {
+        // Hard-coded values for obvious reasons.
+        create("release") {
+            storeFile = rootProject.file("release.keystore")
+            storePassword = "mercari"
+            keyAlias = "key0"
+            keyPassword = "mercari"
+        }
+    }
+
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isDebuggable = false
+            isZipAlignEnabled = true
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            val files = rootProject.file("config/proguard/")
+                .listFiles()
+                ?.filter { it.name.startsWith("proguard") }
+                ?.toTypedArray()
+
+            files?.let { proguardFiles(*it) }
+
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
