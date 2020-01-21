@@ -1,4 +1,4 @@
-package com.example.currencyconverter.core.extensions
+package com.mfinatti.matheusmovies.core.extensions
 
 import android.content.Context
 

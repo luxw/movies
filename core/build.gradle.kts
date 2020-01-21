@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlin-kapt")
+    id(GradlePlugins.AndroidLibrary)
+    id(GradlePlugins.KotlinAndroid)
+    id(GradlePlugins.KotlinAndroidExtensions)
+    id(GradlePlugins.KotlinKapt)
 }
 
 apply(from = "$rootDir/config/quality.gradle.kts")

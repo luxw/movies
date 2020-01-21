@@ -1,4 +1,4 @@
-package com.example.currencyconverter.core.injection
+package com.mfinatti.matheusmovies.core.injection
 
 import com.example.currencyconverter.core.BuildConfig
 import com.squareup.moshi.Moshi

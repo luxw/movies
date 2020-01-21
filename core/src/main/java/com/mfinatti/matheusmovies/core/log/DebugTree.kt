@@ -1,4 +1,4 @@
-package com.example.currencyconverter.core.log
+package com.mfinatti.matheusmovies.core.log
 
 import android.annotation.SuppressLint
 import android.os.Build

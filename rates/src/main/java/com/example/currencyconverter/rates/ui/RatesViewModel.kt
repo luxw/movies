@@ -4,7 +4,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.currencyconverter.core.log.Log
+import com.mfinatti.matheusmovies.core.log.Log
 import com.example.currencyconverter.core.rates.domain.Currency
 import com.example.currencyconverter.core.rates.domain.RatesRepository
 import io.reactivex.disposables.CompositeDisposable

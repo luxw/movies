@@ -1,5 +1,5 @@
 @file:Suppress("FunctionMinLength")
-package com.example.currencyconverter.core.log
+package com.mfinatti.matheusmovies.core.log
 
 import com.example.currencyconverter.core.BuildConfig
 import timber.log.Timber

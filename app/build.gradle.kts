@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-android-extensions")
-    id("kotlin-kapt")
+    id(GradlePlugins.AndroidApplication)
+    id(GradlePlugins.KotlinAndroid)
+    id(GradlePlugins.KotlinAndroidExtensions)
+    id(GradlePlugins.KotlinKapt)
 }
 
 apply(from = "$rootDir/config/quality.gradle.kts")
@@ -12,7 +12,7 @@ android {
     buildToolsVersion = Versions.buildTools
 
     defaultConfig {
-        applicationId = "com.example.currencyconverter"
+        applicationId = "com.mfinatti.matheusmovies"
         minSdkVersion(Versions.minSdk)
         targetSdkVersion(Versions.targetSdk)
 
@@ -48,7 +48,7 @@ android {
         }
     }
 
-    dynamicFeatures = mutableSetOf(":rates")
+    dynamicFeatures = mutableSetOf(":movies")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -61,18 +61,18 @@ android {
 }
 
 base {
-    archivesBaseName = "CurrencyConverter"
+    archivesBaseName = "MatheusMovies"
 }
 
 dependencies {
+    // Core module dependency
+    api(project(":core"))
+
     implementation(Dependencies.kotlin)
     implementation(Dependencies.android.appCompat)
     implementation(Dependencies.android.constraintLayout)
 
     api(Dependencies.android.rxAndroid)
-
-    // Core module dependency
-    implementation(project(":core"))
 
     kapt(Dependencies.android.daggerCompiler)
 

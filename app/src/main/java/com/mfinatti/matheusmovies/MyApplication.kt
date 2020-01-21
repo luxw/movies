@@ -1,10 +1,10 @@
-package com.example.currencyconverter
+package com.mfinatti.matheusmovies
 
 import android.app.Application
 import android.content.Context
-import com.example.currencyconverter.core.injection.CoreComponent
-import com.example.currencyconverter.core.injection.DaggerCoreComponent
-import com.example.currencyconverter.core.log.Log
+import com.mfinatti.matheusmovies.core.injection.CoreComponent
+import com.mfinatti.matheusmovies.core.injection.DaggerCoreComponent
+import com.mfinatti.matheusmovies.core.log.Log
 
 /**
  * Application configuration and initialisation.

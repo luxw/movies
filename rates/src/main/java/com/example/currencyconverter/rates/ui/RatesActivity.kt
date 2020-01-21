@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import com.example.currencyconverter.core.log.Log
+import com.mfinatti.matheusmovies.core.log.Log
 import com.example.currencyconverter.core.rates.domain.Currency
 import com.example.currencyconverter.rates.R
 import com.example.currencyconverter.rates.databinding.ActivityRatesBinding

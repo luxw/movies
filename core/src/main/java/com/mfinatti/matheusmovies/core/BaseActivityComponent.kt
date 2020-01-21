@@ -1,7 +1,7 @@
-package com.example.currencyconverter.core
+package com.mfinatti.matheusmovies.core
 
 import android.app.Activity
-import com.example.currencyconverter.core.injection.BaseComponent
+import com.mfinatti.matheusmovies.core.injection.BaseComponent
 
 /**
  * Base dagger component for use in activities.

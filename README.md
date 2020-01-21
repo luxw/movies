@@ -49,7 +49,7 @@ To help build this app, I opted to use Android Jetpack libraries as they would g
 ### Decisions on the libraries
 
 For testing, I'd rather use MockK instead of Mockito for the same reason: it's built for Kotlin and therefore it's better to use.
-Also, it provides coroutines support which is something that Mockito doesn't.
+Also, it provides coroutine support which is something that Mockito doesn't.
 
 The quality tools are good for checking code style (Ktlint), and also finding potential bugs and performance problems (detekt).
 They're important to maintain a consistent code base even with different developers on the team.

@@ -1,4 +1,4 @@
-package com.example.currencyconverter.core.injection
+package com.mfinatti.matheusmovies.core.injection
 
 /**
  * Base dagger component.

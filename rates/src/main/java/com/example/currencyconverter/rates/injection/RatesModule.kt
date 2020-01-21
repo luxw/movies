@@ -1,7 +1,7 @@
 package com.example.currencyconverter.rates.injection
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.currencyconverter.core.injection.scope.FeatureScope
+import com.mfinatti.matheusmovies.core.injection.scope.FeatureScope
 import com.example.currencyconverter.core.rates.domain.RatesRepository
 import com.example.currencyconverter.rates.ui.RatesActivity
 import com.example.currencyconverter.rates.ui.RatesViewModel

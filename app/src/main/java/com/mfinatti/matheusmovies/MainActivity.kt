@@ -1,10 +1,10 @@
-package com.example.currencyconverter
+package com.mfinatti.matheusmovies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.currencyconverter.core.log.Log
-import com.example.currencyconverter.core.ui.Rates
-import com.example.currencyconverter.core.ui.getIntentTo
+import com.mfinatti.matheusmovies.core.log.Log
+import com.mfinatti.matheusmovies.core.ui.Rates
+import com.mfinatti.matheusmovies.core.ui.getIntentTo
 
 /**
  * Main Activity, the only purpose is to be an entry-point to the app and route the user to the

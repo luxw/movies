@@ -1,9 +1,9 @@
 package com.example.currencyconverter.rates.injection
 
-import com.example.currencyconverter.core.BaseActivityComponent
-import com.example.currencyconverter.core.injection.CoreComponent
-import com.example.currencyconverter.core.injection.rates.RatesDataModule
-import com.example.currencyconverter.core.injection.scope.FeatureScope
+import com.mfinatti.matheusmovies.core.BaseActivityComponent
+import com.mfinatti.matheusmovies.core.injection.CoreComponent
+import com.mfinatti.matheusmovies.core.injection.rates.RatesDataModule
+import com.mfinatti.matheusmovies.core.injection.scope.FeatureScope
 import com.example.currencyconverter.rates.ui.RatesActivity
 import dagger.Component
 
@@ -15,7 +15,8 @@ import dagger.Component
     dependencies = [CoreComponent::class]
 )
 @FeatureScope
-internal interface RatesComponent : BaseActivityComponent<RatesActivity> {
+internal interface RatesComponent :
+    BaseActivityComponent<RatesActivity> {
 
     /**
      * Builder interface for the [RatesComponent].

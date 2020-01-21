@@ -1,4 +1,4 @@
-package com.example.currencyconverter.core.injection.scope
+package com.mfinatti.matheusmovies.core.injection.scope
 
 import javax.inject.Scope
 

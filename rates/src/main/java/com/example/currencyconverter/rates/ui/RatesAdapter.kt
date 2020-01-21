@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.currencyconverter.core.log.Log
+import com.mfinatti.matheusmovies.core.log.Log
 import com.example.currencyconverter.rates.databinding.ItemRatesBinding
 import kotlinx.android.synthetic.main.item_rates.view.*
 

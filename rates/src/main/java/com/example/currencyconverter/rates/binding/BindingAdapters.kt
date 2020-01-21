@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.currencyconverter.core.extensions.getIdentifier
+import com.mfinatti.matheusmovies.core.extensions.getIdentifier
 import com.example.currencyconverter.rates.R
 import java.util.Locale
 

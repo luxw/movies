@@ -1,5 +1,5 @@
 @file:Suppress("MatchingDeclarationName")
-package com.example.currencyconverter.core.ui
+package com.mfinatti.matheusmovies.core.ui
 
 import android.content.Intent
 

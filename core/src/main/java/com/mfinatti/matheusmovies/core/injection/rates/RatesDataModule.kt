@@ -1,6 +1,6 @@
-package com.example.currencyconverter.core.injection.rates
+package com.mfinatti.matheusmovies.core.injection.rates
 
-import com.example.currencyconverter.core.injection.scope.FeatureScope
+import com.mfinatti.matheusmovies.core.injection.scope.FeatureScope
 import com.example.currencyconverter.core.rates.domain.RatesApi
 import com.example.currencyconverter.core.rates.domain.RatesRepository
 import dagger.Module

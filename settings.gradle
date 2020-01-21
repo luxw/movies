@@ -1,5 +1,5 @@
 include ':app'
 include ':core'
-include ':rates'
+include ':movies'
 
-rootProject.name='CurrencyConverter'
+rootProject.name='MatheusMovies'

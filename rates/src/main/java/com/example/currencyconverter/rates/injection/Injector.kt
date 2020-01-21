@@ -1,6 +1,6 @@
 package com.example.currencyconverter.rates.injection
 
-import com.example.currencyconverter.MyApplication
+import com.mfinatti.matheusmovies.MyApplication
 import com.example.currencyconverter.rates.ui.RatesActivity
 
 /**
