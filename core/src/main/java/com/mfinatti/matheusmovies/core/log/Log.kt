@@ -1,7 +1,7 @@
 @file:Suppress("FunctionMinLength")
 package com.mfinatti.matheusmovies.core.log
 
-import com.example.currencyconverter.core.BuildConfig
+import com.mfinatti.matheusmovies.core.BuildConfig
 import timber.log.Timber
 
 /**

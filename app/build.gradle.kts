@@ -75,7 +75,5 @@ dependencies {
 
     api(Dependencies.android.rxAndroid)
 
-    kapt(Dependencies.android.daggerCompiler)
-
     addTestDependencies()
 }

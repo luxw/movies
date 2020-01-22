@@ -31,12 +31,17 @@ android {
 dependencies {
     implementation(Dependencies.android.timber)
 
+    // Koin DI library
+    api(Dependencies.android.koin.androidCore)
+    api(Dependencies.android.koin.androidXScope)
+    api(Dependencies.android.koin.androidXViewModel)
+
     api(Dependencies.android.rxJava)
     api(Dependencies.android.rxKotlin)
     api(Dependencies.android.retrofit)
-    api(Dependencies.android.dagger)
 
     api(Dependencies.android.moshi)
+    api(Dependencies.android.moshiAdapters)
     api(Dependencies.android.moshiAdapter)
     api(Dependencies.android.httpLogging)
     api(Dependencies.android.rxJavaAdapter)
@@ -45,8 +50,6 @@ dependencies {
 
     api(Dependencies.android.navigation)
     api(Dependencies.android.navigationUi)
-
-    kapt(Dependencies.android.daggerCompiler)
 
     addTestDependencies()
 }

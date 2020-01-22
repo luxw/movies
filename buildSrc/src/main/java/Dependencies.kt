@@ -28,7 +28,7 @@ object Versions {
     const val retrofit = "2.6.1"
     const val moshi = "1.9.2"
     const val httpLogging = "4.3.1"
-    const val dagger = "2.25.4"
+    const val koin = "2.0.1"
     const val material = "1.0.0"
     const val glide = "4.10.0"
     const val navigation = "2.1.0"
@@ -75,14 +75,20 @@ object AndroidDependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.rxJavaAdapter}"
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
+    const val moshiAdapters = "com.squareup.moshi:moshi-adapters:${Versions.moshi}"
     const val moshiAdapter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     const val httpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLogging}"
-    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
+    val koin = Koin
+    object Koin {
+        const val androidCore = "org.koin:koin-android:${Versions.koin}"
+        const val androidXScope = "org.koin:koin-androidx-scope:${Versions.koin}"
+        const val androidXViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+    }
 }
 
 /**

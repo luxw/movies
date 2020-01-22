@@ -28,7 +28,16 @@ android {
     }
 
     buildTypes {
+        val apiKey = "\"f393f12976e6ab8c677bd89bafe2a1c5\""
+        val fieldName = "API_KEY"
+
+        getByName("debug") {
+            buildConfigField("String", fieldName, apiKey)
+        }
+
         getByName("release") {
+            buildConfigField("String", fieldName, apiKey)
+
             isDebuggable = false
             isZipAlignEnabled = true
         }
@@ -45,8 +54,6 @@ dependencies {
     implementation(Dependencies.android.lifecycle)
     implementation(Dependencies.android.lifecycleViewModel)
     implementation(Dependencies.android.glide)
-
-    kapt(Dependencies.android.daggerCompiler)
 
     addTestDependencies()
 }

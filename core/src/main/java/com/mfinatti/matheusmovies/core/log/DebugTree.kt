@@ -98,7 +98,7 @@ class DebugTree : Timber.Tree() {
         private const val MAX_LOG_LENGTH = 4000
         private const val MAX_TAG_LENGTH = 23
         private const val CALL_STACK_INDEX = 8
-        private const val PREFIX = "CURRENCY."
+        private const val PREFIX = "MOVIES."
         private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
     }
 }
