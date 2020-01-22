@@ -31,6 +31,7 @@ object Versions {
     const val dagger = "2.25.4"
     const val material = "1.0.0"
     const val glide = "4.10.0"
+    const val navigation = "2.1.0"
 
     // Testing dependencies
     const val testJUnit = "4.12"
@@ -80,6 +81,8 @@ object AndroidDependencies {
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
 /**
@@ -103,6 +106,7 @@ object TestDependencies {
 object GradleDependencies {
     const val buildGradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
 }
 
 /**

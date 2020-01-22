@@ -10,6 +10,10 @@ buildscript {
     dependencies {
         classpath(Dependencies.gradle.buildGradle)
         classpath(Dependencies.gradle.kotlinGradle)
+
+        // Navigation Safe args
+        classpath(Dependencies.gradle.navigationSafeArgs)
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

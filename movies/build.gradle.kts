@@ -1,5 +1,5 @@
 plugins {
-    id(GradlePlugins.AndroidLibrary)
+    id(GradlePlugins.AndroidDynamicFeature)
     id(GradlePlugins.KotlinAndroid)
     id(GradlePlugins.KotlinAndroidExtensions)
     id(GradlePlugins.KotlinKapt)
@@ -26,25 +26,25 @@ android {
     dataBinding {
         isEnabled = true
     }
+
+    buildTypes {
+        getByName("release") {
+            isDebuggable = false
+            isZipAlignEnabled = true
+        }
+    }
 }
 
 dependencies {
-    implementation(Dependencies.android.timber)
+    // App module dependency
+    implementation(project(":app"))
 
-    api(Dependencies.android.rxJava)
-    api(Dependencies.android.rxKotlin)
-    api(Dependencies.android.retrofit)
-    api(Dependencies.android.dagger)
-
-    api(Dependencies.android.moshi)
-    api(Dependencies.android.moshiAdapter)
-    api(Dependencies.android.httpLogging)
-    api(Dependencies.android.rxJavaAdapter)
-
-    api(Dependencies.android.material)
-
-    api(Dependencies.android.navigation)
-    api(Dependencies.android.navigationUi)
+    implementation(Dependencies.kotlin)
+    implementation(Dependencies.android.appCompat)
+    implementation(Dependencies.android.constraintLayout)
+    implementation(Dependencies.android.lifecycle)
+    implementation(Dependencies.android.lifecycleViewModel)
+    implementation(Dependencies.android.glide)
 
     kapt(Dependencies.android.daggerCompiler)
 

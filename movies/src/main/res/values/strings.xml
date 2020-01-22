@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Feature name -->
+    <string name="feature_name" translatable="false">Movies</string>
+</resources>

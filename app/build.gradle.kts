@@ -3,6 +3,7 @@ plugins {
     id(GradlePlugins.KotlinAndroid)
     id(GradlePlugins.KotlinAndroidExtensions)
     id(GradlePlugins.KotlinKapt)
+    id(GradlePlugins.SafeArgs)
 }
 
 apply(from = "$rootDir/config/quality.gradle.kts")
