@@ -1,5 +1,7 @@
 package com.mfinatti.matheusmovies.movies.domain.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.Date
 
 /**
@@ -13,12 +15,14 @@ import java.util.Date
  * @param voteAverage average of the movie score from people's votes.
  * @param originalLanguage the movie's original language.
  */
+@Entity(tableName = "movies")
 internal data class MovieOverview(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val title: String,
     val poster: String,
     val overview: String,
     val releaseDate: Date,
     val voteAverage: Double,
-    val originalLanguage: String
+    val originalLanguage: String,
+    val popularity: Double
 )

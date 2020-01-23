@@ -3,4 +3,8 @@
 
     <!-- Feature name -->
     <string name="feature_name" translatable="false">Movies</string>
+
+    <!-- Error message when loading overviews -->
+    <string name="error_loading_overview">Failed to load movies. Check your internet connection.</string>
+
 </resources>

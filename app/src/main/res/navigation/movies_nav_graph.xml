@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/movies_nav_graph"
-    app:startDestination="@+id/initialScreenFragment">
+    app:startDestination="@+id/discoverFragment">
 
     <fragment
-        android:id="@+id/initialScreenFragment"
+        android:id="@+id/discoverFragment"
         android:name="com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverFragment"
-        android:label="InitialScreenFragment" />
+        android:label="DiscoverFragment" />
 
 </navigation>

@@ -1,15 +1,14 @@
-package com.mfinatti.matheusmovies.movies.data.repository
+package com.mfinatti.matheusmovies.movies.data.remote
 
-import com.mfinatti.matheusmovies.movies.data.model.DiscoverResponseDataModel
+import com.mfinatti.matheusmovies.movies.data.remote.model.DiscoverResponseDataModel
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
  * API access to the TVdb.
  */
-interface MoviesApi {
+internal interface MoviesApi {
 
     /**
      * Gets the discover movies.

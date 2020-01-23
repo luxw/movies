@@ -1,4 +1,4 @@
-package com.mfinatti.matheusmovies.movies.data.model
+package com.mfinatti.matheusmovies.movies.data.remote.model
 
 import com.squareup.moshi.Json
 import java.util.Date
@@ -9,10 +9,10 @@ import java.util.Date
 data class MovieOverviewDataModel(
     val id: Int,
     @Json(name = "vote_count") val voteCount: Int,
-    @Json(name = "poster_path") val posterPath: String,
+    @Json(name = "poster_path") val posterPath: String?,
     val popularity: Double,
     val adult: Boolean,
-    @Json(name = "backdrop_path") val backdropPath: String,
+    @Json(name = "backdrop_path") val backdropPath: String?,
     @Json(name = "original_language") val originalLanguage: String,
     @Json(name = "original_title") val originalTitle: String,
     @Json(name = "genre_ids") val genreIds: List<Int>,

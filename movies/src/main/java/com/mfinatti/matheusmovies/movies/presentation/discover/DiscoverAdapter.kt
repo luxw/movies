@@ -2,6 +2,8 @@ package com.mfinatti.matheusmovies.movies.presentation.discover
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedList
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.mfinatti.matheusmovies.movies.R
@@ -11,7 +13,7 @@ import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
  * The recycler view adapter for the movie discover screen.
  */
 internal class DiscoverAdapter
-    : ListAdapter<MovieOverview, DiscoverAdapterViewHolder>(DiffCallback()) {
+    : PagedListAdapter<MovieOverview, DiscoverAdapterViewHolder>(DiffCallback()) {
 
     private class DiffCallback : DiffUtil.ItemCallback<MovieOverview>() {
 

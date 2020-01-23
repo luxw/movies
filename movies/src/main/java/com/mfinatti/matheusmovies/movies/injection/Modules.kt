@@ -1,13 +1,16 @@
 package com.mfinatti.matheusmovies.movies.injection
 
+import androidx.room.Room
 import com.mfinatti.matheusmovies.core.network.ApiKeyInterceptor
 import com.mfinatti.matheusmovies.movies.BuildConfig
-import com.mfinatti.matheusmovies.movies.data.repository.MoviesApi
+import com.mfinatti.matheusmovies.movies.data.local.MovieDatabase
+import com.mfinatti.matheusmovies.movies.data.remote.MoviesApi
 import com.mfinatti.matheusmovies.movies.data.repository.MoviesRepositoryImpl
 import com.mfinatti.matheusmovies.movies.domain.repository.MoviesRepository
 import com.mfinatti.matheusmovies.movies.domain.usecases.GetDiscoverMoviesUseCase
 import com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverViewModel
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.qualifier.named
@@ -36,16 +39,32 @@ val moviesDataModule = module {
             .create(MoviesApi::class.java)
     }
 
+    // Database
+    single {
+        Room.databaseBuilder(
+            androidApplication(),
+            MovieDatabase::class.java,
+            "movies.db"
+        ).build()
+    }
+
+    // DAO
+    single {
+        get<MovieDatabase>().moviesDao()
+    }
+
     // Repository
     single<MoviesRepository> {
-        MoviesRepositoryImpl(get())
+        MoviesRepositoryImpl(get(), get())
     }
 }
 
 val moviesModule = module {
 
+    // Use cases
     factory { GetDiscoverMoviesUseCase(get()) }
 
+    // Discover ViewModel
     viewModel { DiscoverViewModel(get()) }
 }
 

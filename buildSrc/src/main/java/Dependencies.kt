@@ -32,6 +32,8 @@ object Versions {
     const val material = "1.0.0"
     const val glide = "4.10.0"
     const val navigation = "2.1.0"
+    const val room = "2.2.3"
+    const val paging = "2.1.1"
 
     // Testing dependencies
     const val testJUnit = "4.12"
@@ -82,6 +84,11 @@ object AndroidDependencies {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomRxJava = "androidx.room:room-rxjava2:${Versions.room}"
+    const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+    const val pagingRxJava = "androidx.paging:paging-rxjava2:${Versions.paging}"
 
     val koin = Koin
     object Koin {

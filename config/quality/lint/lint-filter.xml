@@ -18,4 +18,12 @@
 
     <!-- Ignore missing density folders because we don't have all images -->
     <issue id="IconMissingDensityFolder" severity="ignore" />
+
+    <!-- Ignore navigation errors due to multi-module configuration -->
+    <issue id="InvalidNavigation" severity="ignore">
+        <ignore path="app/src/main/res/navigation/app_nav_graph.xml" />
+    </issue>
+    <issue id="UnusedIds" severity="ignore">
+        <ignore path="app/src/main/res/navigation/app_nav_graph.xml" />
+    </issue>
 </lint>

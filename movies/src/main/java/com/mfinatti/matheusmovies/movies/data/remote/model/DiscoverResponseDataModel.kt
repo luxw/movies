@@ -1,4 +1,4 @@
-package com.mfinatti.matheusmovies.movies.data.model
+package com.mfinatti.matheusmovies.movies.data.remote.model
 
 import com.squareup.moshi.Json
 

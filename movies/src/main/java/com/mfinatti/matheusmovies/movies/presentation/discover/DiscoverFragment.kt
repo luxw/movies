@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.mfinatti.matheusmovies.core.log.Log
+import com.mfinatti.matheusmovies.core.view.extensions.showErrorSnackBar
 import com.mfinatti.matheusmovies.movies.R
 import com.mfinatti.matheusmovies.movies.injection.injectFeatures
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -40,11 +41,15 @@ class DiscoverFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("onViewCreated")
 
         view.findViewById<RecyclerView>(R.id.movies_listView).adapter = adapter
 
-        viewModel.getMovies().observe(viewLifecycleOwner, Observer { movies ->
-            adapter.submitList(movies)
+        viewModel.getMovies().observe(viewLifecycleOwner, Observer { uiModel ->
+            when (uiModel) {
+                is DiscoverUiModel.Loaded -> adapter.submitList(uiModel.movies)
+                DiscoverUiModel.Error -> showErrorSnackBar(R.string.error_loading_overview, view)
+            }
         })
     }
 }

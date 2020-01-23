@@ -51,5 +51,7 @@ dependencies {
     api(Dependencies.android.navigation)
     api(Dependencies.android.navigationUi)
 
+    implementation(Dependencies.android.roomRuntime)
+
     addTestDependencies()
 }

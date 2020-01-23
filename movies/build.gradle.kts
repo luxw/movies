@@ -54,6 +54,12 @@ dependencies {
     implementation(Dependencies.android.lifecycle)
     implementation(Dependencies.android.lifecycleViewModel)
     implementation(Dependencies.android.glide)
+    implementation(Dependencies.android.paging)
+    implementation(Dependencies.android.pagingRxJava)
+    implementation(Dependencies.android.roomRuntime)
+    implementation(Dependencies.android.roomRxJava)
+
+    kapt(Dependencies.android.roomCompiler)
 
     addTestDependencies()
 }
