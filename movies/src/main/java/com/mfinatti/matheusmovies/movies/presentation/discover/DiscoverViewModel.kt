@@ -1,7 +1,10 @@
 package com.mfinatti.matheusmovies.movies.presentation.discover
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mfinatti.matheusmovies.core.log.Log
+import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.usecases.GetDiscoverMoviesUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -14,7 +17,9 @@ internal class DiscoverViewModel(
 
     private val disposeBag = CompositeDisposable()
 
-    internal fun getMovies() {
+    internal fun getMovies(): LiveData<List<MovieOverview>> {
+        val liveData = MutableLiveData<List<MovieOverview>>()
+
         val disposable = getDiscoverMoviesUseCase.execute()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -24,10 +29,13 @@ internal class DiscoverViewModel(
                 },
                 onNext = { movies ->
                     Log.d("movies $movies")
+                    liveData.postValue(movies)
                 }
             )
 
         disposeBag.add(disposable)
+
+        return liveData
     }
 
     override fun onCleared() {

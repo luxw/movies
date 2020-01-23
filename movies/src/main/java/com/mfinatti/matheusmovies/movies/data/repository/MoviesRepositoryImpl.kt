@@ -6,6 +6,8 @@ import io.reactivex.Observable
 
 /**
  * Implementation of the movie repository interface.
+ *
+ * @param moviesApi access to the movies remote api.
  */
 internal class MoviesRepositoryImpl(
     private val moviesApi: MoviesApi

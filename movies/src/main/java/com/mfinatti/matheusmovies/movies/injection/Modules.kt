@@ -1,6 +1,5 @@
 package com.mfinatti.matheusmovies.movies.injection
 
-import androidx.fragment.app.Fragment
 import com.mfinatti.matheusmovies.core.network.ApiKeyInterceptor
 import com.mfinatti.matheusmovies.movies.BuildConfig
 import com.mfinatti.matheusmovies.movies.data.repository.MoviesApi
@@ -10,8 +9,8 @@ import com.mfinatti.matheusmovies.movies.domain.usecases.GetDiscoverMoviesUseCas
 import com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverViewModel
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.context.loadKoinModules
 import org.koin.core.qualifier.named
-import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -49,5 +48,14 @@ val moviesModule = module {
 
     viewModel { DiscoverViewModel(get()) }
 }
+
+private val loadModules by lazy {
+    loadKoinModules(listOf(moviesDataModule, moviesModule))
+}
+
+/**
+* Enables injecting on this feature.
+*/
+fun injectFeatures() = loadModules
 
 private const val ENDPOINT = "https://api.themoviedb.org/3/"

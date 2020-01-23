@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.mfinatti.matheusmovies.core.injection.coreDataModule
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.mfinatti.matheusmovies.core.log.Log
 import com.mfinatti.matheusmovies.movies.R
-import com.mfinatti.matheusmovies.movies.injection.moviesDataModule
-import com.mfinatti.matheusmovies.movies.injection.moviesModule
+import com.mfinatti.matheusmovies.movies.injection.injectFeatures
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.loadKoinModules
-import org.koin.core.error.DefinitionOverrideException
+
 
 /**
  * Fragment that serves as an entry point to the movies module of the application.
@@ -22,17 +21,15 @@ class DiscoverFragment : Fragment() {
 
     private val viewModel: DiscoverViewModel by viewModel()
 
+    private val adapter by lazy {
+        DiscoverAdapter()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("onCreate")
 
-        // Since this is the first screen of the feature module, we need to load the injection
-        // modules we're going to use.
-        try {
-            loadKoinModules(listOf(moviesDataModule, moviesModule))
-        } catch (e: DefinitionOverrideException) {
-            Log.d("module already loaded ${e.message}")
-        }
+        injectFeatures()
     }
 
     override fun onCreateView(
@@ -44,6 +41,10 @@ class DiscoverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getMovies()
+        view.findViewById<RecyclerView>(R.id.movies_listView).adapter = adapter
+
+        viewModel.getMovies().observe(viewLifecycleOwner, Observer { movies ->
+            adapter.submitList(movies)
+        })
     }
 }
