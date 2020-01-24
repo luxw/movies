@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Overview"/>
+    <style name="Overview.Poster">
+        <item name="android:layout_width">@dimen/overview_posterWidth</item>
+        <item name="android:layout_height">@dimen/overview_posterHeight</item>
+        <item name="android:layout_marginStart">@dimen/margin</item>
+    </style>
+    <style name="Overview.Text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/margin</item>
+        <item name="android:layout_marginTop">@dimen/margin_half</item>
+    </style>
+    <style name="Overview.Text.Title">
+        <item name="android:textSize">@dimen/primaryTextSize</item>
+    </style>
+    <style name="Overview.Text.Overview">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textSize">@dimen/secondaryTextSize</item>
+        <item name="android:layout_marginEnd">@dimen/margin_double</item>
+        <item name="android:layout_marginBottom">@dimen/margin</item>
+        <item name="android:maxLines">@integer/overview_maxLines</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Movie"/>
+    <style name="Movie.Poster">
+        <item name="android:layout_width">@dimen/movie_posterWidth</item>
+        <item name="android:layout_height">@dimen/movie_posterHeight</item>
+        <item name="android:layout_marginStart">@dimen/margin</item>
+        <item name="android:layout_marginTop">@dimen/margin</item>
+    </style>
+    <style name="Movie.Text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_half</item>
+        <item name="android:layout_marginStart">@dimen/margin_half</item>
+        <item name="android:layout_marginEnd">@dimen/margin_half</item>
+    </style>
+    <style name="Movie.Text.Primary">
+        <item name="android:textSize">@dimen/primaryTextSize</item>
+    </style>
+    <style name="Movie.Text.Secondary">
+        <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:textSize">@dimen/secondaryTextSize</item>
+    </style>
+    <style name="Movie.Text.Overview" parent="Movie.Text.Primary">
+        <item name="android:padding">@dimen/margin_half</item>
+    </style>
+
+</resources>

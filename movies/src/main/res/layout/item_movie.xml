@@ -18,22 +18,17 @@
 
         <ImageView
             android:id="@+id/movie_poster"
-            android:layout_width="67dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="16dp"
+            style="@style/Overview.Poster"
+            android:contentDescription="@string/movie_accessbility_poster"
             app:image="@{MovieOverviewExtensionsKt.getPosterUrl(overview)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"/>
+            tools:srcCompat="@android:color/black"/>
 
         <TextView
             android:id="@+id/movie_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:textSize="24sp"
+            style="@style/Overview.Text.Title"
             android:text="@{overview.title}"
             app:layout_constraintStart_toEndOf="@+id/movie_poster"
             app:layout_constraintTop_toTopOf="@+id/movie_poster"
@@ -41,31 +36,13 @@
 
         <TextView
             android:id="@+id/movie_overview"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
-            android:maxLines="2"
-            android:ellipsize="end"
+            style="@style/Overview.Text.Overview"
             android:text="@{overview.overview}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/movie_poster"
             app:layout_constraintTop_toBottomOf="@+id/movie_title"
             tools:text="@tools:sample/lorem/random" />
-
-        <TextView
-            android:id="@+id/movie_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginEnd="16dp"
-            android:text='@{String.format("%.1f", overview.voteAverage)}'
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/movie_poster"
-            tools:text="7.6/10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Overview integers -->
+    <integer name="overview_maxLines">2</integer>
+
+</resources>

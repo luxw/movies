@@ -17,4 +17,8 @@
         <item quantity="other">Genres: %1$s</item>
     </plurals>
 
+    <!-- Accessibility strings -->
+    <string name="movie_accessbility_backdrop">Movie picture</string>
+    <string name="movie_accessbility_poster">Movie poster</string>
+
 </resources>
