@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mfinatti.matheusmovies.core.log.Log
 import com.mfinatti.matheusmovies.movies.domain.model.Movie
+import com.mfinatti.matheusmovies.movies.domain.model.extensions.backdropUrl
 import com.mfinatti.matheusmovies.movies.domain.usecases.GetMovieDetailUseCase
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
@@ -20,16 +21,27 @@ internal class MovieDetailViewModel(
 
     private val disposeBag = CompositeDisposable()
 
-    fun getMovieDetails(): LiveData<Movie> {
-        val liveData = MutableLiveData<Movie>()
+    fun getMovieDetails(): LiveData<MovieUiModel> {
+        val liveData = MutableLiveData<MovieUiModel>()
 
         getMovieDetailUseCase.execute(movieId)
             .subscribeOn(ioScheduler)
             .observeOn(mainScheduler)
             .subscribeBy(
                 onNext = { movie ->
+                    val uiModel = MovieUiModel(
+                        title = movie.title,
+                        originalTitle = movie.originalTitle,
+                        backdrop = movie.backdropUrl,
+                        overview = movie.overview,
+                        info = listOf(
+                            String.format("%tY", movie.releaseDate),
+                            String.format("%dm", movie.runtime),
+                            movie.genres.joinToString(", ")
+                        ).joinToString(" | ")
+                    )
                     Log.d("movie: $movie")
-                    liveData.postValue(movie)
+                    liveData.postValue(uiModel)
                 },
                 onError = { error ->
                     Log.e("Error, $error")

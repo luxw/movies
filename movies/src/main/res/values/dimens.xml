@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Overview dimensions -->
-    <dimen name="overview_posterHeight">100dp</dimen>
-    <dimen name="overview_posterWidth">67dp</dimen>
+    <dimen name="overview_posterHeight">240dp</dimen>
+    <dimen name="overview_posterWidth">160dp</dimen>
 
     <!-- Detail dimensions -->
-    <dimen name="backdrop_height">250dp</dimen>
+    <dimen name="backdrop_height">350dp</dimen>
 
     <dimen name="movie_posterHeight">240dp</dimen>
     <dimen name="movie_posterWidth">160dp</dimen>

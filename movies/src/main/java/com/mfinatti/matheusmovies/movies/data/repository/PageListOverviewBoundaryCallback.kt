@@ -45,7 +45,7 @@ internal class PageListOverviewBoundaryCallback(
 
         isRequestInProgress = true
 
-        moviesApi.getDiscoverMovies(page = page)
+        moviesApi.getPopularMovies(page = page)
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .map { it.results }

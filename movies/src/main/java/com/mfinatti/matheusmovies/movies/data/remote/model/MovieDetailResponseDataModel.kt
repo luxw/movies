@@ -24,5 +24,6 @@ data class MovieDetailResponseDataModel(
     val revenue: Long,
     val status: String,
     val tagline: String,
-    val genres: List<GenreDataModel>
+    val genres: List<GenreDataModel>,
+    val runtime: Int
 )

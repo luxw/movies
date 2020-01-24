@@ -11,8 +11,10 @@ import com.bumptech.glide.Glide
  * @param url the address to load the image from.
  */
 @BindingAdapter("image")
-fun ImageView.loadImageFromUrl(url: String) {
-    Glide.with(this)
-        .load(Uri.parse(url))
-        .into(this)
+fun ImageView.loadImageFromUrl(url: String?) {
+    if (url != null) {
+        Glide.with(this)
+            .load(Uri.parse(url))
+            .into(this)
+    }
 }

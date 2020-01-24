@@ -7,16 +7,6 @@
     <!-- Error message when loading overviews -->
     <string name="error_loading_overview">Failed to load movies. Check your internet connection.</string>
 
-    <!-- Movie detail strings -->
-    <string name="movie_originalTitle">Original Title: %1$s</string>
-    <string name="movie_releaseDate">Release Date: %1$tb %1$te, %1$tY</string>
-    <string name="movie_voteAverage">Average score: %1$.1f/10</string>
-
-    <plurals name="movie_genres">
-        <item quantity="one">Genre: %1$s</item>
-        <item quantity="other">Genres: %1$s</item>
-    </plurals>
-
     <!-- Accessibility strings -->
     <string name="movie_accessbility_backdrop">Movie picture</string>
     <string name="movie_accessbility_poster">Movie poster</string>

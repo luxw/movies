@@ -22,5 +22,6 @@ internal fun MovieDetailResponseDataModel.toDomainModel() =
         genres = genres.map { it.name },
         homepage = homepage,
         status = status,
-        tagline = tagline
+        tagline = tagline,
+        runtime = runtime
     )

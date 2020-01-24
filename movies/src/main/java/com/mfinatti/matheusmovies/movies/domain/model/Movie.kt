@@ -18,5 +18,6 @@ internal data class Movie(
     val overview: String,
     val releaseDate: Date,
     val voteAverage: Double,
-    val tagline: String
+    val tagline: String,
+    val runtime: Int
 )

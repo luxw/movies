@@ -7,9 +7,7 @@
     <data>
         <variable
             name="movie"
-            type="com.mfinatti.matheusmovies.movies.domain.model.Movie" />
-
-        <import type="com.mfinatti.matheusmovies.movies.domain.model.extensions.MovieExtensionsKt" />
+            type="com.mfinatti.matheusmovies.movies.presentation.details.MovieUiModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -42,7 +40,7 @@
                     android:fitsSystemWindows="true"
                     android:contentDescription="@string/movie_accessbility_backdrop"
                     app:layout_collapseMode="parallax"
-                    app:image="@{MovieExtensionsKt.getBackdropUrl(movie)}"
+                    app:image="@{movie.backdrop}"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <androidx.appcompat.widget.Toolbar
@@ -62,70 +60,49 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/movie_poster"
-                    style="@style/Movie.Poster"
-                    android:contentDescription="@string/movie_accessbility_poster"
-                    app:image="@{MovieExtensionsKt.getPosterUrl(movie)}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@android:color/black" />
 
                 <TextView
                     android:id="@+id/movie_originalTitle"
                     style="@style/Movie.Text.Primary"
                     android:textIsSelectable="true"
-                    app:originalTitle="@{movie.originalTitle}"
-                    app:layout_constraintTop_toTopOf="@id/movie_poster"
-                    app:layout_constraintStart_toEndOf="@id/movie_poster"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="@tools:sample/full_names"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{movie.title}"
+                    tools:text="@tools:sample/full_names" />
 
                 <TextView
-                    android:id="@+id/movie_releaseDate"
+                    android:id="@+id/movie_info"
                     style="@style/Movie.Text.Secondary"
+                    android:text="@{movie.info}"
                     android:textIsSelectable="true"
-                    app:releaseDate="@{movie.releaseDate}"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/movie_originalTitle"
-                    app:layout_constraintStart_toEndOf="@id/movie_poster"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="Release date: 19 Sep 2019" />
+                    tools:text="2019 | 109m | Action, Fiction" />
 
-                <TextView
-                    android:id="@+id/movie_averageScore"
-                    style="@style/Movie.Text.Secondary"
-                    android:textIsSelectable="true"
-                    app:score="@{movie.voteAverage}"
-                    app:layout_constraintTop_toBottomOf="@id/movie_releaseDate"
-                    app:layout_constraintStart_toEndOf="@id/movie_poster"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="Average score: 8.6/10" />
+                <View
+                    android:background="#55AAAAAA"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/movie_overview" />
 
-                <TextView
-                    android:id="@+id/movie_genres"
-                    style="@style/Movie.Text.Secondary"
-                    android:textIsSelectable="true"
-                    app:genre="@{movie.genres}"
-                    app:layout_constraintTop_toBottomOf="@id/movie_averageScore"
-                    app:layout_constraintStart_toEndOf="@id/movie_poster"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="Genres: Adventure, Fiction"/>
-                
                 <TextView
                     android:id="@+id/movie_overview"
                     style="@style/Movie.Text.Overview"
-                    android:textIsSelectable="true"
                     android:text="@{movie.overview}"
-                    app:layout_constraintTop_toBottomOf="@id/movie_poster"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="@tools:sample/lorem/random"/>
-                
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/movie_info"
+                    tools:text="@tools:sample/lorem/random"
+                    tools:visibility="visible" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
