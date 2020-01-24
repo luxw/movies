@@ -2,8 +2,8 @@
 <resources>
 
     <!-- App bar dimensions -->
-    <dimen name="appBar_height">56dp</dimen>
     <dimen name="title_textSize">20sp</dimen>
     <dimen name="title_marginLeft">72dp</dimen>
     <dimen name="title_marginTop">16dp</dimen>
+
 </resources>

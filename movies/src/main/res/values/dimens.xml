@@ -4,6 +4,8 @@
     <dimen name="overview_posterHeight">240dp</dimen>
     <dimen name="overview_posterWidth">160dp</dimen>
 
+    <dimen name="margin_item">2dp</dimen>
+
     <!-- Detail dimensions -->
     <dimen name="backdrop_height">350dp</dimen>
 

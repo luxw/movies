@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mfinatti.matheusmovies.core.log.Log
+import com.mfinatti.matheusmovies.core.view.decorator.MarginDecoration
 import com.mfinatti.matheusmovies.core.view.extensions.showErrorSnackBar
 import com.mfinatti.matheusmovies.movies.R
 import com.mfinatti.matheusmovies.movies.injection.injectFeatures
@@ -50,7 +51,12 @@ class DiscoverFragment : Fragment() {
         // Set the router navController to enable navigation.
         viewModel.router.navController = findNavController()
 
-        view.findViewById<RecyclerView>(R.id.movies_listView).adapter = adapter
+        view.findViewById<RecyclerView>(R.id.movies_listView).also { recycler ->
+            recycler.adapter = adapter
+
+            val marginSize = resources.getDimensionPixelSize(R.dimen.margin_item)
+            recycler.addItemDecoration(MarginDecoration(marginSize))
+        }
 
         viewModel.getMovies().observe(viewLifecycleOwner, Observer { uiModel ->
             when (uiModel) {
