@@ -21,6 +21,7 @@
             style="@style/Overview.Poster"
             android:contentDescription="@string/movie_accessbility_poster"
             app:image="@{MovieOverviewExtensionsKt.getPosterUrl(overview)}"
+            app:placeholder="@{@drawable/placeholder_movieposter}"
             app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
