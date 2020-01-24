@@ -31,12 +31,21 @@ internal interface MoviesDao {
     @Query("SELECT *  FROM movies ORDER BY popularity DESC")
     fun getOverviews(): DataSource.Factory<Int, MovieOverview>
 
-    @Query("SELECT *  FROM movies ORDER BY popularity DESC")
-    fun a(): Single<List<MovieOverview>>
-
+    /**
+     * Inserts a [Movie] into the database.
+     *
+     * @param movie the movie to insert.
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovie(movie: Movie)
 
+    /**
+     * Gets a movie from the database.
+     *
+     * @param id the id of the movie.
+     * @return a [Single] observable to a [Movie].
+     */
     @Query("SELECT * FROM movie_detail WHERE id = :id")
     fun getMovie(id: Int): Single<Movie>
 }
+

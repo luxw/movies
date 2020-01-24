@@ -47,6 +47,7 @@
     </style>
     <style name="Movie.Text.Overview" parent="Movie.Text.Primary">
         <item name="android:padding">@dimen/margin_half</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
 </resources>

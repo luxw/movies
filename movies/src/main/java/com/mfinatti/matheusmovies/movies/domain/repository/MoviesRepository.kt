@@ -26,5 +26,11 @@ internal interface MoviesRepository {
      */
     fun getLoadingStateObservable(): Observable<LoadingState>
 
+    /**
+     * Gets details of a movie.
+     *
+     * @param id the movie id.
+     * @return an [Observable] to a [Movie].
+     */
     fun getMovieDetails(id: Int): Observable<Movie>
 }
