@@ -23,5 +23,5 @@ internal abstract class MovieDatabase : RoomDatabase() {
      *
      * @return an instance of the [MoviesDao].
      */
-    abstract fun moviesDao() : MoviesDao
+    abstract fun moviesDao(): MoviesDao
 }

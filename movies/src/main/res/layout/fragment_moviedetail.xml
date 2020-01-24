@@ -79,6 +79,7 @@
                 <TextView
                     android:id="@+id/movie_originalTitle"
                     style="@style/Movie.Text.Primary"
+                    android:textIsSelectable="true"
                     app:originalTitle="@{movie.originalTitle}"
                     app:layout_constraintTop_toTopOf="@id/movie_poster"
                     app:layout_constraintStart_toEndOf="@id/movie_poster"
@@ -88,6 +89,7 @@
                 <TextView
                     android:id="@+id/movie_releaseDate"
                     style="@style/Movie.Text.Secondary"
+                    android:textIsSelectable="true"
                     app:releaseDate="@{movie.releaseDate}"
                     app:layout_constraintTop_toBottomOf="@id/movie_originalTitle"
                     app:layout_constraintStart_toEndOf="@id/movie_poster"
@@ -97,6 +99,7 @@
                 <TextView
                     android:id="@+id/movie_averageScore"
                     style="@style/Movie.Text.Secondary"
+                    android:textIsSelectable="true"
                     app:score="@{movie.voteAverage}"
                     app:layout_constraintTop_toBottomOf="@id/movie_releaseDate"
                     app:layout_constraintStart_toEndOf="@id/movie_poster"
@@ -106,6 +109,7 @@
                 <TextView
                     android:id="@+id/movie_genres"
                     style="@style/Movie.Text.Secondary"
+                    android:textIsSelectable="true"
                     app:genre="@{movie.genres}"
                     app:layout_constraintTop_toBottomOf="@id/movie_averageScore"
                     app:layout_constraintStart_toEndOf="@id/movie_poster"
@@ -115,6 +119,7 @@
                 <TextView
                     android:id="@+id/movie_overview"
                     style="@style/Movie.Text.Overview"
+                    android:textIsSelectable="true"
                     android:text="@{movie.overview}"
                     app:layout_constraintTop_toBottomOf="@id/movie_poster"
                     app:layout_constraintStart_toStartOf="parent"

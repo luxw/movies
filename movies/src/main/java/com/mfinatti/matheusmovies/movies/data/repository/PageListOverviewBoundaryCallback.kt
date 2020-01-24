@@ -1,7 +1,6 @@
 package com.mfinatti.matheusmovies.movies.data.repository
 
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.mfinatti.matheusmovies.core.log.Log
 import com.mfinatti.matheusmovies.movies.data.local.MoviesDao
 import com.mfinatti.matheusmovies.movies.data.remote.MoviesApi
@@ -38,8 +37,9 @@ internal class PageListOverviewBoundaryCallback(
 
     private fun fetchAndStore() {
         // Avoid making multiple requests
-        if (isRequestInProgress)
+        if (isRequestInProgress) {
             return
+        }
 
         Log.d("fetchAndStore, page: $page")
 

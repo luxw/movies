@@ -9,11 +9,7 @@ import com.mfinatti.matheusmovies.movies.data.remote.model.extensions.toDomainMo
 import com.mfinatti.matheusmovies.movies.domain.model.Movie
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.repository.MoviesRepository
-import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 
 /**

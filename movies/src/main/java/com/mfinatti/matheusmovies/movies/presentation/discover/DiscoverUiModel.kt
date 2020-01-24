@@ -13,10 +13,10 @@ internal sealed class DiscoverUiModel {
      *
      * @param movies a paged list of movie overviews.
      */
-    class Loaded(val movies: PagedList<MovieOverview>) : DiscoverUiModel()
+    internal class Loaded(val movies: PagedList<MovieOverview>) : DiscoverUiModel()
 
     /**
      * Error.
      */
-    object Error : DiscoverUiModel()
+    internal object Error : DiscoverUiModel()
 }

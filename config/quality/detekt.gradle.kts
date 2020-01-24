@@ -9,7 +9,7 @@ tasks.register<JavaExec>("detekt") {
     classpath = configurations.getByName("detekt")
     val input = "$projectDir"
     val config = "$rootDir/config/quality/detekt/detekt-config.yml"
-    val excludes = ".*/resources/.*,.*/build/.*,**/build.gradle.kts,**/test/**"
+    val excludes = ".*/resources/.*,.*/build/.*,**/build.gradle.kts,**/test/**,**/build/**"
     val report = "html:$buildDir/reports/detekt.html"
     val params = listOf("-i", input, "-c", config, "-ex", excludes, "-r", report, "--fail-fast")
     args(params)

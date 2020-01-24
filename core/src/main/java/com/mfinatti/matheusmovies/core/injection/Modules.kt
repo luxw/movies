@@ -11,6 +11,10 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.Date
 
+/**
+ * Core data module.
+ * Contains the dependencies used for data modules, such as HTTP Clients, converters and adapters.
+ */
 val coreDataModule = module {
 
     // HTTP Logging interceptor for OkHttp clients.

@@ -48,4 +48,3 @@ internal interface MoviesDao {
     @Query("SELECT * FROM movie_detail WHERE id = :id")
     fun getMovie(id: Int): Single<Movie>
 }
-

@@ -2,7 +2,6 @@ package com.mfinatti.matheusmovies.core.view.extensions
 
 import android.view.View
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,16 +21,3 @@ fun Fragment.showErrorSnackBar(
         show()
     }
 }
-
-fun Fragment.setActionBarTitle(title: String) {
-    (activity as? AppCompatActivity)?.supportActionBar?.title = title
-}
-
-fun Fragment.hideActionBar() {
-    (activity as? AppCompatActivity)?.supportActionBar?.hide()
-}
-
-fun Fragment.showActionBar() {
-    (activity as? AppCompatActivity)?.supportActionBar?.show()
-}
-

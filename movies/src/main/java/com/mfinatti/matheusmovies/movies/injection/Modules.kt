@@ -24,6 +24,11 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+/**
+ * Movies data module.
+ * Contains dependencies for the data part of the Movies module. Such as: Room database, retrofit,
+ * DAOs.
+ */
 val moviesDataModule = module {
 
     // Customised http client to this module
@@ -60,6 +65,10 @@ val moviesDataModule = module {
     single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
 }
 
+/**
+ * Movies module.
+ * Contains dependencies on the business logic of the movies module.
+ */
 val moviesModule = module {
 
     // Use cases

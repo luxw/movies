@@ -3,17 +3,13 @@ package com.mfinatti.matheusmovies.movies.presentation.discover
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
 import com.mfinatti.matheusmovies.core.log.Log
 import com.mfinatti.matheusmovies.movies.data.repository.LoadingState
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.usecases.GetDiscoverMoviesUseCase
 import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.rxkotlin.zipWith
-import io.reactivex.schedulers.Schedulers
 
 internal class DiscoverViewModel(
     val router: DiscoverRouter,

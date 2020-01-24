@@ -3,9 +3,11 @@ package com.mfinatti.matheusmovies.movies.view.binding
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.mfinatti.matheusmovies.movies.R
-import java.text.DateFormat
 import java.util.Date
 
+/**
+ * Sets the genre.
+ */
 @BindingAdapter("genre")
 fun TextView.setGenresString(list: List<String>?) {
     list?.let {
@@ -19,6 +21,9 @@ fun TextView.setGenresString(list: List<String>?) {
     }
 }
 
+/**
+ * Sets the release date.
+ */
 @BindingAdapter("releaseDate")
 fun TextView.setReleaseDate(date: Date?) {
     date?.let {
@@ -26,6 +31,9 @@ fun TextView.setReleaseDate(date: Date?) {
     }
 }
 
+/**
+ * Sets the score.
+ */
 @BindingAdapter("score")
 fun TextView.setScore(score: Double?) {
     score?.let {
@@ -33,6 +41,9 @@ fun TextView.setScore(score: Double?) {
     }
 }
 
+/**
+ * Sets the original title.
+ */
 @BindingAdapter("originalTitle")
 fun TextView.setOriginalTitle(title: String?) {
     title?.let {

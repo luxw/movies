@@ -10,13 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mfinatti.matheusmovies.core.log.Log
-import com.mfinatti.matheusmovies.core.view.extensions.setActionBarTitle
-import com.mfinatti.matheusmovies.core.view.extensions.showActionBar
 import com.mfinatti.matheusmovies.core.view.extensions.showErrorSnackBar
 import com.mfinatti.matheusmovies.movies.R
 import com.mfinatti.matheusmovies.movies.injection.injectFeatures
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 /**
  * Fragment that serves as an entry point to the movies module of the application.
