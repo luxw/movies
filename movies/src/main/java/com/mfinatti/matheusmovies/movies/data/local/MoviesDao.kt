@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.mfinatti.matheusmovies.movies.domain.model.Movie
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import io.reactivex.Single
 
@@ -32,4 +33,10 @@ internal interface MoviesDao {
 
     @Query("SELECT *  FROM movies ORDER BY popularity DESC")
     fun a(): Single<List<MovieOverview>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertMovie(movie: Movie)
+
+    @Query("SELECT * FROM movie_detail WHERE id = :id")
+    fun getMovie(id: Int): Single<Movie>
 }

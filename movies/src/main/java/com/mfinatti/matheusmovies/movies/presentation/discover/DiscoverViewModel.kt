@@ -8,6 +8,7 @@ import com.mfinatti.matheusmovies.core.log.Log
 import com.mfinatti.matheusmovies.movies.data.repository.LoadingState
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.usecases.GetDiscoverMoviesUseCase
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -15,8 +16,11 @@ import io.reactivex.rxkotlin.zipWith
 import io.reactivex.schedulers.Schedulers
 
 internal class DiscoverViewModel(
-    private val getDiscoverMoviesUseCase: GetDiscoverMoviesUseCase
-) : ViewModel() {
+    val router: DiscoverRouter,
+    private val getDiscoverMoviesUseCase: GetDiscoverMoviesUseCase,
+    private val ioScheduler: Scheduler,
+    private val mainScheduler: Scheduler
+) : ViewModel(), MovieClickListener {
 
     private val disposeBag = CompositeDisposable()
 
@@ -26,8 +30,8 @@ internal class DiscoverViewModel(
         val liveData = MutableLiveData<DiscoverUiModel>()
 
         val disposable = getDiscoverMoviesUseCase.execute()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(ioScheduler)
+            .observeOn(mainScheduler)
             .subscribeBy(
                 onError = {
                     Log.d("Error! $it")
@@ -48,6 +52,10 @@ internal class DiscoverViewModel(
         disposeBag.add(disposable)
 
         return liveData
+    }
+
+    override fun onMovieClicked(movie: MovieOverview) {
+        router.goToMovieDetail(movie)
     }
 
     override fun onCleared() {

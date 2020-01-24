@@ -8,7 +8,12 @@ import com.mfinatti.matheusmovies.movies.data.remote.MoviesApi
 import com.mfinatti.matheusmovies.movies.data.repository.MoviesRepositoryImpl
 import com.mfinatti.matheusmovies.movies.domain.repository.MoviesRepository
 import com.mfinatti.matheusmovies.movies.domain.usecases.GetDiscoverMoviesUseCase
+import com.mfinatti.matheusmovies.movies.domain.usecases.GetMovieDetailUseCase
+import com.mfinatti.matheusmovies.movies.presentation.details.MovieDetailViewModel
+import com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverRouter
 import com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -49,23 +54,28 @@ val moviesDataModule = module {
     }
 
     // DAO
-    single {
-        get<MovieDatabase>().moviesDao()
-    }
+    single { get<MovieDatabase>().moviesDao() }
 
     // Repository
-    single<MoviesRepository> {
-        MoviesRepositoryImpl(get(), get())
-    }
+    single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
 }
 
 val moviesModule = module {
 
     // Use cases
     factory { GetDiscoverMoviesUseCase(get()) }
+    factory { GetMovieDetailUseCase(get()) }
+
+    // Router
+    factory { DiscoverRouter() }
 
     // Discover ViewModel
-    viewModel { DiscoverViewModel(get()) }
+    viewModel { DiscoverViewModel(get(), get(), Schedulers.io(), AndroidSchedulers.mainThread()) }
+
+    // Movie detail ViewModel
+    viewModel { (movieId: Int) ->
+        MovieDetailViewModel(movieId, get(), Schedulers.io(), AndroidSchedulers.mainThread())
+    }
 }
 
 private val loadModules by lazy {

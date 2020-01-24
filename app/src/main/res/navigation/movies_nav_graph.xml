@@ -8,6 +8,28 @@
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverFragment"
-        android:label="DiscoverFragment" />
+        android:label="DiscoverFragment">
+
+        <action
+            android:id="@+id/openMovieDetail"
+            app:destination="@id/movieDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.mfinatti.matheusmovies.movies.presentation.details.MovieDetailFragment"
+        android:label="MovieDetailFragment">
+
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            app:nullable="false" />
+        <argument
+            android:name="movieTitle"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
 
 </navigation>

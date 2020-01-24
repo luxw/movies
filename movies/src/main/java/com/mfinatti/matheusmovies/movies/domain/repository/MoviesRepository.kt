@@ -2,6 +2,7 @@ package com.mfinatti.matheusmovies.movies.domain.repository
 
 import androidx.paging.PagedList
 import com.mfinatti.matheusmovies.movies.data.repository.LoadingState
+import com.mfinatti.matheusmovies.movies.domain.model.Movie
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import io.reactivex.Observable
 
@@ -24,4 +25,6 @@ internal interface MoviesRepository {
      * @return an [Observable] to the current [LoadingState].
      */
     fun getLoadingStateObservable(): Observable<LoadingState>
+
+    fun getMovieDetails(id: Int): Observable<Movie>
 }

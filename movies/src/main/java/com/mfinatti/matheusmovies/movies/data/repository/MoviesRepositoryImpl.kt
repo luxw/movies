@@ -5,10 +5,14 @@ import androidx.paging.RxPagedListBuilder
 import com.mfinatti.matheusmovies.core.log.Log
 import com.mfinatti.matheusmovies.movies.data.local.MoviesDao
 import com.mfinatti.matheusmovies.movies.data.remote.MoviesApi
+import com.mfinatti.matheusmovies.movies.data.remote.model.extensions.toDomainModel
+import com.mfinatti.matheusmovies.movies.domain.model.Movie
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.repository.MoviesRepository
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Scheduler
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 
@@ -20,7 +24,7 @@ import io.reactivex.subjects.BehaviorSubject
 internal class MoviesRepositoryImpl(
     private val moviesApi: MoviesApi,
     private val moviesDao: MoviesDao
-): MoviesRepository {
+) : MoviesRepository {
 
     private val progressStateObservable = BehaviorSubject.create<LoadingState>()
 
@@ -32,11 +36,6 @@ internal class MoviesRepositoryImpl(
             .setInitialLoadSizeHint(INITIAL_LOAD_HINT)
             .setPageSize(PAGE_SIZE)
             .build()
-
-//        moviesDao.a().subscribeOn(Schedulers.io()).subscribe { movies, t ->
-//            Log.d("movies ${movies.size}")
-//            Log.d("movies: ${movies.map { it.title }}")
-//        }
 
         return RxPagedListBuilder(moviesDao.getOverviews(), config)
             .setBoundaryCallback(
@@ -51,6 +50,14 @@ internal class MoviesRepositoryImpl(
     }
 
     override fun getLoadingStateObservable() = progressStateObservable
+
+    override fun getMovieDetails(id: Int): Observable<Movie> {
+        return moviesDao.getMovie(id).onErrorResumeNext {
+            moviesApi.getMovie(id)
+                .map { it.toDomainModel() }
+                .doOnSuccess { movie -> moviesDao.insertMovie(movie) }
+        }.toObservable()
+    }
 
     private companion object {
         private const val PAGE_SIZE = 20

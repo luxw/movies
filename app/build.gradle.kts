@@ -56,6 +56,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        // We have to add the explicit cast before accessing the options itself.
+        // If we don't, it does not work: "unresolved reference: jvmTarget"
+        val options = this as org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+        options.jvmTarget = "1.8"
+    }
+
     dataBinding {
         isEnabled = true
     }

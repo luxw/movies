@@ -1,7 +1,3 @@
-/**
- * Copyright © 2019 Liebherr-Hausgeräte GmbH. All rights reserved.
- */
-
 package com.mfinatti.matheusmovies
 
 import android.os.Bundle

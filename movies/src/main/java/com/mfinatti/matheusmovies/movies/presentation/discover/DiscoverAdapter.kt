@@ -7,13 +7,15 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.mfinatti.matheusmovies.movies.R
+import com.mfinatti.matheusmovies.movies.databinding.ItemMovieBinding
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 
 /**
  * The recycler view adapter for the movie discover screen.
  */
-internal class DiscoverAdapter
-    : PagedListAdapter<MovieOverview, DiscoverAdapterViewHolder>(DiffCallback()) {
+internal class DiscoverAdapter(
+    private val movieClickListener: MovieClickListener
+) : PagedListAdapter<MovieOverview, DiscoverAdapterViewHolder>(DiffCallback()) {
 
     private class DiffCallback : DiffUtil.ItemCallback<MovieOverview>() {
 
@@ -24,12 +26,12 @@ internal class DiscoverAdapter
             oldItem == newItem
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        DiscoverAdapterViewHolder(
-            LayoutInflater
-                .from(parent.context)
-                .inflate(R.layout.item_movie, parent, false)
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiscoverAdapterViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemMovieBinding.inflate(inflater, parent, false)
+
+        return DiscoverAdapterViewHolder(binding, movieClickListener)
+    }
 
     override fun onBindViewHolder(holder: DiscoverAdapterViewHolder, position: Int) =
         holder.bind(getItem(position))
