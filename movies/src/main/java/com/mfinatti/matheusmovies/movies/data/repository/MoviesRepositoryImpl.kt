@@ -10,7 +10,7 @@ import com.mfinatti.matheusmovies.movies.domain.model.Movie
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.repository.MoviesRepository
 import io.reactivex.Observable
-import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.disposables.CompositeDisposable
 
 /**
  * Implementation of the movie repository interface.
@@ -19,10 +19,9 @@ import io.reactivex.subjects.BehaviorSubject
  */
 internal class MoviesRepositoryImpl(
     private val moviesApi: MoviesApi,
-    private val moviesDao: MoviesDao
+    private val moviesDao: MoviesDao,
+    private val disposeBag: CompositeDisposable
 ) : MoviesRepository {
-
-    private val progressStateObservable = BehaviorSubject.create<LoadingState>()
 
     override fun getDiscoverMovies(page: Int): Observable<PagedList<MovieOverview>> {
         Log.d("getDiscoverMovies, page: $page")
@@ -38,14 +37,12 @@ internal class MoviesRepositoryImpl(
                 PageListOverviewBoundaryCallback(
                     moviesApi,
                     moviesDao,
-                    progressStateObservable,
+                    disposeBag,
                     page
                 )
             )
             .buildObservable()
     }
-
-    override fun getLoadingStateObservable() = progressStateObservable
 
     override fun getMovieDetails(id: Int): Observable<Movie> {
         return moviesDao.getMovie(id).onErrorResumeNext {

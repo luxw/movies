@@ -1,11 +1,9 @@
 package com.mfinatti.matheusmovies.movies.domain.usecases
 
 import androidx.paging.PagedList
-import com.mfinatti.matheusmovies.movies.data.repository.LoadingState
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.repository.MoviesRepository
 import io.reactivex.Observable
-import io.reactivex.rxkotlin.zipWith
 
 /**
  * A use-case to get movies for the discover screen.
@@ -21,8 +19,6 @@ internal class GetDiscoverMoviesUseCase(
      *
      * @return an observable to a list of movies and the loading state.
      */
-    fun execute(): Observable<Pair<PagedList<MovieOverview>, LoadingState>> =
-        repository
-            .getDiscoverMovies(1)
-            .zipWith(repository.getLoadingStateObservable())
+    fun execute(): Observable<PagedList<MovieOverview>> =
+        repository.getDiscoverMovies(1)
 }

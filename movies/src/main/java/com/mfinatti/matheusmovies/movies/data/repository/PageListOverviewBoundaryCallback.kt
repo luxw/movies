@@ -10,20 +10,17 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.BehaviorSubject
 
 internal class PageListOverviewBoundaryCallback(
     private val moviesApi: MoviesApi,
     private val moviesDao: MoviesDao,
-    private val progress: BehaviorSubject<LoadingState>,
+    private val disposeBag: CompositeDisposable,
     initialPage: Int
 ) : PagedList.BoundaryCallback<MovieOverview>() {
 
     private var page = initialPage
 
     private var isRequestInProgress = false
-
-    private val disposeBag = CompositeDisposable()
 
     override fun onItemAtEndLoaded(itemAtEnd: MovieOverview) {
         Log.d("onItemAtEndLoaded, $itemAtEnd")
@@ -52,7 +49,6 @@ internal class PageListOverviewBoundaryCallback(
             .map { movieDataModels ->
                 movieDataModels.map { it.toDomainModel() }
             }
-            .doOnSubscribe { progress.onNext(LoadingState.Loading) }
             .doOnSuccess { movies ->
                 Log.d("onSuccess")
 
@@ -64,16 +60,14 @@ internal class PageListOverviewBoundaryCallback(
             .ignoreElement()
             .doFinally {
                 isRequestInProgress = false
-                disposeBag.clear()
+
             }
             .subscribeBy(
                 onComplete = {
                     Log.d("Movies fetched and stored")
-                    progress.onNext(LoadingState.Success)
                 },
                 onError = { throwable ->
                     Log.e("Failed to fetch/store movies, $throwable")
-                    progress.onNext(LoadingState.Error(throwable))
                 }
             )
             .addTo(disposeBag)

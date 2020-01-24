@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mfinatti.matheusmovies.core.log.Log
-import com.mfinatti.matheusmovies.movies.data.repository.LoadingState
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
 import com.mfinatti.matheusmovies.movies.domain.usecases.GetDiscoverMoviesUseCase
 import io.reactivex.Scheduler
@@ -15,10 +14,9 @@ internal class DiscoverViewModel(
     val router: DiscoverRouter,
     private val getDiscoverMoviesUseCase: GetDiscoverMoviesUseCase,
     private val ioScheduler: Scheduler,
-    private val mainScheduler: Scheduler
+    private val mainScheduler: Scheduler,
+    private val disposeBag: CompositeDisposable
 ) : ViewModel(), MovieClickListener {
-
-    private val disposeBag = CompositeDisposable()
 
     internal fun getMovies(): LiveData<DiscoverUiModel> {
         Log.i("Get movies")
@@ -33,15 +31,9 @@ internal class DiscoverViewModel(
                     Log.d("Error! $it")
                     liveData.postValue(DiscoverUiModel.Error)
                 },
-                onNext = { (movies, loadingState) ->
-                    Log.d("movies ${movies.map { "${it?.title} - ${it?.popularity}" }}")
+                onNext = { movies ->
+                    Log.d("movies ${movies}}")
                     liveData.postValue(DiscoverUiModel.Loaded(movies))
-
-                    when (loadingState) {
-                        LoadingState.Loading -> {} // Do nothing, no loading ui state is programmed.
-                        LoadingState.Success -> {} // Do nothing, nothing special for success case.
-                        is LoadingState.Error -> liveData.postValue(DiscoverUiModel.Error)
-                    }
                 }
             )
 

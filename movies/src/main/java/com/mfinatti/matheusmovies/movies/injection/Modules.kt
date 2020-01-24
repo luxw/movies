@@ -13,6 +13,7 @@ import com.mfinatti.matheusmovies.movies.presentation.details.MovieDetailViewMod
 import com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverRouter
 import com.mfinatti.matheusmovies.movies.presentation.discover.DiscoverViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidApplication
@@ -62,7 +63,9 @@ val moviesDataModule = module {
     single { get<MovieDatabase>().moviesDao() }
 
     // Repository
-    single<MoviesRepository> { MoviesRepositoryImpl(get(), get()) }
+    single<MoviesRepository> {
+        MoviesRepositoryImpl(get(), get(), get(named(DISPOSE_BAG)))
+    }
 }
 
 /**
@@ -70,6 +73,8 @@ val moviesDataModule = module {
  * Contains dependencies on the business logic of the movies module.
  */
 val moviesModule = module {
+
+    single(named(DISPOSE_BAG)) { CompositeDisposable() }
 
     // Use cases
     factory { GetDiscoverMoviesUseCase(get()) }
@@ -79,7 +84,15 @@ val moviesModule = module {
     factory { DiscoverRouter() }
 
     // Discover ViewModel
-    viewModel { DiscoverViewModel(get(), get(), Schedulers.io(), AndroidSchedulers.mainThread()) }
+    viewModel {
+        DiscoverViewModel(
+            get(),
+            get(),
+            Schedulers.io(),
+            AndroidSchedulers.mainThread(),
+            get(named(DISPOSE_BAG))
+        )
+    }
 
     // Movie detail ViewModel
     viewModel { (movieId: Int) ->
@@ -97,3 +110,5 @@ private val loadModules by lazy {
 fun injectFeatures() = loadModules
 
 private const val ENDPOINT = "https://api.themoviedb.org/3/"
+
+private const val DISPOSE_BAG = "discoverDisposable"
