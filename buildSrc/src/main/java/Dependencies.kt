@@ -113,7 +113,6 @@ object TestDependencies {
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
     const val koin = "org.koin:koin-test:${Versions.koin}"
-    const val fragment = "androidx.fragment:fragment-testing:${Versions.fragment}"
     const val coreRuntime = "androidx.arch.core:core-runtime:2.0.1"
 }
 
