@@ -26,10 +26,4 @@
 
 -keepattributes InnerClasses,Signature,*Annotation*,EnclosingMethod
 
-# Keep the names of our models so that Moshi can use them
--keepclassmembers class com.example.currencyconverter.core.rates.domain.** {
-  <init>(...);
-  <fields>;
-}
-
 -keepattributes *Annotation*

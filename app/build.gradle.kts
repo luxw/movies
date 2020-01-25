@@ -38,6 +38,7 @@ android {
             isZipAlignEnabled = true
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles(rootProject.file("movies/proguard-rules.pro"))
             val files = rootProject.file("config/proguard/")
                 .listFiles()
                 ?.filter { it.name.startsWith("proguard") }
