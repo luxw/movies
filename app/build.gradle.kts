@@ -69,6 +69,12 @@ android {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinCompile::class).all {
+    kotlinOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 base {
     archivesBaseName = "MatheusMovies"
 }

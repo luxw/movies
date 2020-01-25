@@ -50,6 +50,12 @@ android {
             isZipAlignEnabled = true
         }
     }
+
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
 }
 
 dependencies {
