@@ -79,7 +79,6 @@ Apart from the core module, the "features" could be almost plug-and-play. Allowi
 ## What else I would do
 
 I would definitely implement instrumented tests. However I didn't have enough time to do it. 
-Even though a week is given to finish the project, I'm going to travel to another country for a few days of holiday.
 
 I would add JaCoCo for test coverage and break builds if the coverage is under a threshold.
 

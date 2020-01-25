@@ -20,6 +20,9 @@ android {
         versionCode = Versions.versionCode
         versionName = Versions.versionName
         project.ext.set("versionName", versionName)
+
+        testApplicationId =  "com.mfinatti.matheusmovies.test"
+        testInstrumentationRunner = "android.test.InstrumentationTestRunner"
     }
 
     signingConfigs {

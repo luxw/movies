@@ -34,12 +34,13 @@ object Versions {
     const val navigation = "2.1.0"
     const val room = "2.2.3"
     const val paging = "2.1.1"
+    const val fragment = "1.2.0"
 
     // Testing dependencies
     const val testJUnit = "4.12"
     const val mockk = "1.9.1"
     const val kluent = "1.44"
-    const val archCore = "2.0.0"
+    const val archCore = "2.0.1"
 
     // Instrumented testing dependencies
     const val testExtJUnit = "1.1.1"
@@ -112,6 +113,8 @@ object TestDependencies {
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
     const val koin = "org.koin:koin-test:${Versions.koin}"
+    const val fragment = "androidx.fragment:fragment-testing:${Versions.fragment}"
+    const val coreRuntime = "androidx.arch.core:core-runtime:2.0.1"
 }
 
 /**
