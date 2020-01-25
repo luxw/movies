@@ -12,6 +12,7 @@ fun DependencyHandler.addTestDependencies() {
     testImplementation(Dependencies.test.kluentAndroid)
     testImplementation(Dependencies.test.mockk)
     testImplementation(Dependencies.test.mockkAndroid)
+    testImplementation(Dependencies.test.koin)
     androidTestImplementation(Dependencies.test.extJUnit)
     androidTestImplementation(Dependencies.test.espresso)
     androidTestImplementation(Dependencies.test.archCore)

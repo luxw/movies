@@ -6,17 +6,23 @@ import com.mfinatti.matheusmovies.movies.data.local.MoviesDao
 import com.mfinatti.matheusmovies.movies.data.remote.MoviesApi
 import com.mfinatti.matheusmovies.movies.data.remote.model.extensions.toDomainModel
 import com.mfinatti.matheusmovies.movies.domain.model.MovieOverview
+import com.mfinatti.matheusmovies.movies.injection.IO_SCHEDULER
+import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
+import org.koin.core.KoinComponent
+import org.koin.core.inject
+import org.koin.core.qualifier.named
 
 internal class PageListOverviewBoundaryCallback(
     private val moviesApi: MoviesApi,
     private val moviesDao: MoviesDao,
     private val disposeBag: CompositeDisposable,
     initialPage: Int
-) : PagedList.BoundaryCallback<MovieOverview>() {
+) : PagedList.BoundaryCallback<MovieOverview>(), KoinComponent {
+
+    private val ioScheduler: Scheduler by inject(named(IO_SCHEDULER))
 
     private var page = initialPage
 
@@ -43,8 +49,8 @@ internal class PageListOverviewBoundaryCallback(
         isRequestInProgress = true
 
         moviesApi.getPopularMovies(page = page)
-            .subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
+            .subscribeOn(ioScheduler)
+            .observeOn(ioScheduler)
             .map { it.results }
             .map { movieDataModels ->
                 movieDataModels.map { it.toDomainModel() }
@@ -60,7 +66,6 @@ internal class PageListOverviewBoundaryCallback(
             .ignoreElement()
             .doFinally {
                 isRequestInProgress = false
-
             }
             .subscribeBy(
                 onComplete = {

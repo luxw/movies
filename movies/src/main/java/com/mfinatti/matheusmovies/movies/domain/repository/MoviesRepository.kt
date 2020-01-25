@@ -16,7 +16,7 @@ internal interface MoviesRepository {
      * @param page which page to get discover movies.
      * @return an [Observable] to a list of movie overviews.
      */
-    fun getDiscoverMovies(page: Int = 1): Observable<PagedList<MovieOverview>>
+    fun getPopularMovies(page: Int = 1): Observable<PagedList<MovieOverview>>
 
     /**
      * Gets details of a movie.

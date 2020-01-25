@@ -20,5 +20,5 @@ internal class GetDiscoverMoviesUseCase(
      * @return an observable to a list of movies and the loading state.
      */
     fun execute(): Observable<PagedList<MovieOverview>> =
-        repository.getDiscoverMovies(1)
+        repository.getPopularMovies(1)
 }

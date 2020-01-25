@@ -28,9 +28,6 @@ internal interface MoviesDao {
      *
      * @return a data source that can be used for paging the movies.
      */
-    @Query("SELECT *  FROM movies ORDER BY popularity DESC LIMIT :start, :end")
-    fun getOverviews(start: Int, end: Int): Single<List<MovieOverview>>
-
     @Query("SELECT *  FROM movies ORDER BY popularity DESC")
     fun getOverviews(): DataSource.Factory<Int, MovieOverview>
 

@@ -1,5 +1,6 @@
 package com.mfinatti.matheusmovies.movies.injection
 
+import androidx.paging.PagedList
 import androidx.room.Room
 import com.mfinatti.matheusmovies.core.network.ApiKeyInterceptor
 import com.mfinatti.matheusmovies.movies.BuildConfig
@@ -64,8 +65,24 @@ val moviesDataModule = module {
 
     // Repository
     single<MoviesRepository> {
-        MoviesRepositoryImpl(get(), get(), get(named(DISPOSE_BAG)))
+        MoviesRepositoryImpl(get(), get(), get(named(DISPOSE_BAG)), get())
     }
+
+    // PagedList Config
+    @Suppress("MagicNumber")
+    single {
+        val pageSize = 20
+        val initialLoadSizeHint = 40
+
+        PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setInitialLoadSizeHint(initialLoadSizeHint)
+            .setPageSize(pageSize)
+            .build()
+    }
+
+    // IO Scheduler
+    single(named(IO_SCHEDULER)) { Schedulers.io() }
 }
 
 /**
@@ -112,3 +129,8 @@ fun injectFeatures() = loadModules
 private const val ENDPOINT = "https://api.themoviedb.org/3/"
 
 private const val DISPOSE_BAG = "discoverDisposable"
+
+/**
+ * IO Scheduler named injection.
+ */
+const val IO_SCHEDULER = "ioScheduler"

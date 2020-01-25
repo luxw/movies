@@ -20,19 +20,14 @@ import io.reactivex.disposables.CompositeDisposable
 internal class MoviesRepositoryImpl(
     private val moviesApi: MoviesApi,
     private val moviesDao: MoviesDao,
-    private val disposeBag: CompositeDisposable
+    private val disposeBag: CompositeDisposable,
+    private val pagedListConfig: PagedList.Config
 ) : MoviesRepository {
 
-    override fun getDiscoverMovies(page: Int): Observable<PagedList<MovieOverview>> {
-        Log.d("getDiscoverMovies, page: $page")
+    override fun getPopularMovies(page: Int): Observable<PagedList<MovieOverview>> {
+        Log.d("getPopularMovies, page: $page")
 
-        val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(false)
-            .setInitialLoadSizeHint(INITIAL_LOAD_HINT)
-            .setPageSize(PAGE_SIZE)
-            .build()
-
-        return RxPagedListBuilder(moviesDao.getOverviews(), config)
+        return RxPagedListBuilder(moviesDao.getOverviews(), pagedListConfig)
             .setBoundaryCallback(
                 PageListOverviewBoundaryCallback(
                     moviesApi,
@@ -50,10 +45,5 @@ internal class MoviesRepositoryImpl(
                 .map { it.toDomainModel() }
                 .doOnSuccess { movie -> moviesDao.insertMovie(movie) }
         }.toObservable()
-    }
-
-    private companion object {
-        private const val PAGE_SIZE = 20
-        private const val INITIAL_LOAD_HINT = 40
     }
 }

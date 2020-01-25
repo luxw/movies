@@ -111,6 +111,7 @@ object TestDependencies {
     const val kluentAndroid = "org.amshove.kluent:kluent-android:${Versions.kluent}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+    const val koin = "org.koin:koin-test:${Versions.koin}"
 }
 
 /**

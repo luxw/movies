@@ -11,6 +11,14 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
+/**
+ * ViewModel for the movie detail screen.
+ *
+ * @param movieId id of the movie to be displayed.
+ * @param getMovieDetailUseCase use case for loading movie details.
+ * @param ioScheduler RxJava scheduler to run IO operations.
+ * @param mainScheduler the scheduler to observe on android main thread.
+ */
 internal class MovieDetailViewModel(
     private val movieId: Int,
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
@@ -20,6 +28,11 @@ internal class MovieDetailViewModel(
 
     private val disposeBag = CompositeDisposable()
 
+    /**
+     * Gets the details of the movie.
+     *
+     * @return a live data to a [MovieUiModel] which is a simplified version of the domain entity.
+     */
     fun getMovieDetails(): LiveData<MovieUiModel> {
         val liveData = MutableLiveData<MovieUiModel>()
 
